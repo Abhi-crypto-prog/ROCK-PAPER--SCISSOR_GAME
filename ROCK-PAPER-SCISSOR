@@ -1,0 +1,80 @@
+# ROCK , PAPER , SCISSOR GAME USING BY RANDOM MODULE IN PYTHON.........
+
+import random
+GAME_TOOLS = ["ROCK" , "PAPER" , "SCISSOR"]
+
+"""
+ROCK VS PAPER :- PAPER
+ROCK VS SCISSOR :- ROCK
+PAPER VS SCISSOR :- SCISSOR
+                       """
+
+while True :
+    computer_count = 0
+    user_count = 0
+
+    UC = int(input("""
+    GAME START......
+    1) YES
+    2) NO | EXIT
+                         """))
+
+    if UC == 1 :
+        for a in range(1,6) :
+            user_prompt = int(input("""
+            1) ROCK
+            2) SCISSOR
+            3) PAPER\n :-
+                         """))
+
+            if user_prompt == 1 :
+                user_choice = "ROCK"
+
+            elif user_prompt == 2 :
+                user_choice = "SCISSOR"
+
+            elif user_prompt == 3 :
+                user_choice = "PAPER"
+
+            computer_choice = random.choice(GAME_TOOLS)
+            print(computer_choice)
+
+            if computer_choice == user_choice :
+                print("COMPUTER VALUE", computer_choice)
+                print("USER VALUE" , user_choice)
+                print("GAME DRAW")
+                computer_count = computer_count + 1
+                user_count = user_count + 1
+
+            elif (user_choice == "ROCK" and computer_choice == "SCISSOR") or (user_choice == "SCISSOR" and computer_choice =="PAPER") or (user_choice == "PAPER" and computer_choice == "ROCK") :
+                print("COMPUTER VALUE",computer_choice)
+                print("USER VALUE", user_choice)
+                print("YOU WINNER")
+                user_count = user_count + 1
+
+            else :
+                print("COMPUTER VALUE", computer_choice)
+                print("USER VALUE", user_choice)
+                print("COMPUTER WINNER")
+                computer_count = computer_count + 1
+
+        if user_count == computer_count :
+            print("FINAL GAME DRAW....")
+            print("USER_SCORE",user_count)
+            print("COMPUTER SCORE",computer_count)
+
+        elif user_count > computer_count :
+            print("YOU WINNER")
+            print("USER_SCORE", user_count)
+            print("COMPUTER SCORE", computer_count)
+
+        else :
+            print("COMPUTER WIN THE GAME")
+            print("USER_SCORE", user_count)
+            print("COMPUTER SCORE", computer_count)
+
+    else :
+        print("THE END")
+        break
+
+
