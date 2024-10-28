@@ -1,80 +1,122 @@
-# ROCK , PAPER , SCISSOR GAME USING BY RANDOM MODULE IN PYTHON.........
-
+import tkinter as tk
 import random
-GAME_TOOLS = ["ROCK" , "PAPER" , "SCISSOR"]
 
-"""
-ROCK VS PAPER :- PAPER
-ROCK VS SCISSOR :- ROCK
-PAPER VS SCISSOR :- SCISSOR
-                       """
+# Define constants
+GAME_TOOLS = ["ROCK", "PAPER", "SCISSOR"]
 
-while True :
+# Initialize scores
+computer_count = 0
+user_count = 0
+round_count = 0
+
+
+# Function to play a round
+def play_round(user_choice):
+    global computer_count, user_count, round_count
+
+    # Random choice by computer
+    computer_choice = random.choice(GAME_TOOLS)
+
+    # Determine the winner for the round
+    if computer_choice == user_choice:
+        result_text.set("It's a Draw!")
+    elif (user_choice == "ROCK" and computer_choice == "SCISSOR") or \
+            (user_choice == "SCISSOR" and computer_choice == "PAPER") or \
+            (user_choice == "PAPER" and computer_choice == "ROCK"):
+        user_count += 1
+        result_text.set("You Win!")
+    else:
+        computer_count += 1
+        result_text.set("Computer Wins!")
+
+    # Update choices and score display
+    computer_choice_text.set(f"Computer chose: {computer_choice}")
+    user_choice_text.set(f"You chose: {user_choice}")
+    score_text.set(f"Your Score: {user_count} | Computer Score: {computer_count}")
+
+    # Increment round count and check if game ends
+    round_count += 1
+    if round_count >= 5:
+        if user_count > computer_count:
+            final_result.set("Congratulations! You are the winner!")
+        elif user_count < computer_count:
+            final_result.set("Sorry, the Computer wins!")
+        else:
+            final_result.set("It's a final Draw!")
+        disable_buttons()
+
+
+# Function to reset the game
+def reset_game():
+    global computer_count, user_count, round_count
     computer_count = 0
     user_count = 0
-
-    UC = int(input("""
-    GAME START......
-    1) YES
-    2) NO | EXIT
-                         """))
-
-    if UC == 1 :
-        for a in range(1,6) :
-            user_prompt = int(input("""
-            1) ROCK
-            2) SCISSOR
-            3) PAPER\n :-
-                         """))
-
-            if user_prompt == 1 :
-                user_choice = "ROCK"
-
-            elif user_prompt == 2 :
-                user_choice = "SCISSOR"
-
-            elif user_prompt == 3 :
-                user_choice = "PAPER"
-
-            computer_choice = random.choice(GAME_TOOLS)
-            print(computer_choice)
-
-            if computer_choice == user_choice :
-                print("COMPUTER VALUE", computer_choice)
-                print("USER VALUE" , user_choice)
-                print("GAME DRAW")
-                computer_count = computer_count + 1
-                user_count = user_count + 1
-
-            elif (user_choice == "ROCK" and computer_choice == "SCISSOR") or (user_choice == "SCISSOR" and computer_choice =="PAPER") or (user_choice == "PAPER" and computer_choice == "ROCK") :
-                print("COMPUTER VALUE",computer_choice)
-                print("USER VALUE", user_choice)
-                print("YOU WINNER")
-                user_count = user_count + 1
-
-            else :
-                print("COMPUTER VALUE", computer_choice)
-                print("USER VALUE", user_choice)
-                print("COMPUTER WINNER")
-                computer_count = computer_count + 1
-
-        if user_count == computer_count :
-            print("FINAL GAME DRAW....")
-            print("USER_SCORE",user_count)
-            print("COMPUTER SCORE",computer_count)
-
-        elif user_count > computer_count :
-            print("YOU WINNER")
-            print("USER_SCORE", user_count)
-            print("COMPUTER SCORE", computer_count)
-
-        else :
-            print("COMPUTER WIN THE GAME")
-            print("USER_SCORE", user_count)
-            print("COMPUTER SCORE", computer_count)
-
-    else :
-        print("THE END")
-        break
+    round_count = 0
+    result_text.set("")
+    score_text.set("Your Score: 0 | Computer Score: 0")
+    computer_choice_text.set("")
+    user_choice_text.set("")
+    final_result.set("")
+    enable_buttons()
 
 
+# Helper functions to enable/disable buttons
+def disable_buttons():
+    rock_button.config(state=tk.DISABLED)
+    paper_button.config(state=tk.DISABLED)
+    scissor_button.config(state=tk.DISABLED)
+
+
+def enable_buttons():
+    rock_button.config(state=tk.NORMAL)
+    paper_button.config(state=tk.NORMAL)
+    scissor_button.config(state=tk.NORMAL)
+
+
+# GUI setup
+root = tk.Tk()
+root.title("Rock, Paper, Scissors Game")
+root.configure(bg="#003366")  # Dark blue background
+
+# Display texts
+result_text = tk.StringVar()
+score_text = tk.StringVar(value="Your Score: 0 | Computer Score: 0")
+computer_choice_text = tk.StringVar()
+user_choice_text = tk.StringVar()
+final_result = tk.StringVar()
+
+# Title Label with color and font
+title_label = tk.Label(root, text="Rock, Paper, Scissors", font=("Helvetica", 16, "bold"), bg="#336699", fg="white",
+                       padx=10, pady=10)
+title_label.pack(pady=20)
+
+# Game options with colorful buttons
+button_frame = tk.Frame(root, bg="#003366")
+button_frame.pack(pady=10)
+
+rock_button = tk.Button(button_frame, text="Rock", command=lambda: play_round("ROCK"), width=10, bg="#FF6666",
+                        fg="white", font=("Helvetica", 10, "bold"))
+rock_button.grid(row=0, column=0, padx=5)
+
+paper_button = tk.Button(button_frame, text="Paper", command=lambda: play_round("PAPER"), width=10, bg="#FFCC66",
+                         fg="white", font=("Helvetica", 10, "bold"))
+paper_button.grid(row=0, column=1, padx=5)
+
+scissor_button = tk.Button(button_frame, text="Scissor", command=lambda: play_round("SCISSOR"), width=10, bg="#66CC66",
+                           fg="white", font=("Helvetica", 10, "bold"))
+scissor_button.grid(row=0, column=2, padx=5)
+
+# Result display with colored labels
+tk.Label(root, textvariable=computer_choice_text, font=("Helvetica", 12), bg="#003366", fg="white").pack()
+tk.Label(root, textvariable=user_choice_text, font=("Helvetica", 12), bg="#003366", fg="white").pack()
+tk.Label(root, textvariable=result_text, font=("Helvetica", 14, "bold"), bg="#003366", fg="yellow").pack(pady=10)
+tk.Label(root, textvariable=score_text, font=("Helvetica", 12), bg="#003366", fg="white").pack()
+
+# Final result and reset button
+tk.Label(root, textvariable=final_result, font=("Helvetica", 12, "bold"), bg="#003366", fg="cyan").pack(pady=10)
+reset_button = tk.Button(root, text="Reset Game", command=reset_game, width=15, bg="#3399FF", fg="white",
+                         font=("Helvetica", 10, "bold"))
+reset_button.pack(pady=20)
+
+# Start GUI main loop
+root.mainloop()
