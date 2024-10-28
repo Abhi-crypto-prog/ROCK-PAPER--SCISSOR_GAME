@@ -29,6 +29,7 @@ Python: The project is entirely coded in Python, making use of core concepts lik
 Random Module: The random module is used to simulate the computer's decision-making process by randomly selecting one of the three game options.
 Summary:
 This project is a beginner-friendly Python program that provides a fun way to practice basic programming skills. It also introduces elements of game logic and user interaction in a console-based environment. The simplicity of the game makes it an excellent project for those new to Python, allowing them to grasp fundamental concepts while also creating something interactive and enjoyable.
+![Screenshot 2024-10-28 210313](https://github.com/user-attachments/assets/57312396-6f15-467f-a125-d6cb3f7c64d6)
 
 
 
