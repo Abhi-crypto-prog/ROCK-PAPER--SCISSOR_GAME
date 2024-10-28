@@ -2,31 +2,32 @@
 GAME OF HAND - GESTURE CHOICES
 
 NAME : ABHISHEK CHATTERJEE
-DOMAIN : PYTHON | MODULE
+DOMAIN :-  **Rock, Paper, Scissors Game with GUI in Python**
+          
 
-Overview:
-The "Rock, Paper, Scissors" project is a simple console-based game built using Python. It simulates the classic hand game where two players simultaneously form one of three shapes with their hands: rock, paper, or scissors. The game includes a computer as one of the players, which makes random choices using Python's random module. The user competes against the computer, and the game determines the winner based on the traditional rules of Rock, Paper, Scissors.
+**Overview**:  
+This project is a GUI-based "Rock, Paper, Scissors" game developed in Python, which allows a user to play against the computer in a colorful, interactive interface. The game progresses over five rounds, where the player and computer make choices, and the game keeps track of each side's score to determine the final winner. The user can reset the game at any time to play a new round.
 
-Objective:
-The primary objective of this project is to create an interactive and fun game that allows users to play "Rock, Paper, Scissors" against a computer. The game is designed to demonstrate basic Python programming concepts, such as loops, conditionals, and list operations, while also introducing the use of the random module for simulating the computer's choices.
+**Technologies Used**:  
+- **Python**: The programming language for core logic and functionality.
+- **Tkinter**: A built-in Python module for GUI development, used to create the interface, manage user input, display scores, and handle game controls.
 
-Key Activities:
-User Interaction: The game starts by prompting the user to either begin the game or exit. Once the user decides to play, they are asked to select one of the three options: Rock, Paper, or Scissors.
+**Tools and Libraries**:  
+- **Tkinter Widgets**: Includes buttons for user choices (Rock, Paper, Scissors) and labels to display game status, scores, and final results.
+- **Random Module**: Generates the computer's random choice each round, ensuring an unpredictable opponent.
 
-Computer's Choice: The computer randomly selects one of the three options using the random.choice() function.
+**Purpose**:  
+This project demonstrates fundamental programming skills in Python, including GUI design, event handling, and simple game logic. The colorful interface and score tracking create a fun, engaging experience while allowing users to practice coding concepts like conditionals, loops, and basic user input.
 
-Determine the Winner: The game compares the user's choice with the computer's choice to determine the winner of each round based on the classic rules:
+**Key Features**:
+- **Colorful GUI**: Visually appealing interface with a dark blue background, colored buttons for game choices, and styled text for feedback on game results.
+- **Score and Round Tracking**: Tracks user and computer scores over five rounds and announces the final winner.
+- **Reset Functionality**: A reset button allows users to start a new game at any point, ensuring continued gameplay.
 
-Rock crushes Scissors.
-Scissors cuts Paper.
-Paper covers Rock.
-Scorekeeping: The game keeps track of the scores for both the user and the computer over five rounds. It also handles scenarios where both players choose the same option, resulting in a draw for that round.
+**Ideal Use Cases**:  
+This game is perfect for beginner Python developers looking to learn GUI design or practice event-driven programming. It's also an enjoyable example of combining logic with user-friendly design in Python projects.
 
-End Game: After five rounds, the game announces the overall winner based on the scores. The user is given the option to play again or exit.
 
-Technologies Used:
-Python: The project is entirely coded in Python, making use of core concepts like loops, conditionals, and list operations.
-Random Module: The random module is used to simulate the computer's decision-making process by randomly selecting one of the three game options.
 Summary:
 This project is a beginner-friendly Python program that provides a fun way to practice basic programming skills. It also introduces elements of game logic and user interaction in a console-based environment. The simplicity of the game makes it an excellent project for those new to Python, allowing them to grasp fundamental concepts while also creating something interactive and enjoyable.
 ![Screenshot 2024-10-28 210313](https://github.com/user-attachments/assets/57312396-6f15-467f-a125-d6cb3f7c64d6)
